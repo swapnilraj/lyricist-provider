@@ -17,9 +17,7 @@ lyricistServer = lyrics
   where lyrics :: Maybe Artist -> Maybe Title -> Handler Lyrics
         lyrics mArtist mTitle =
           case (mArtist, mTitle) of
-            (Just ar, Just ti) -> do
-              res <- liftIO $ getLyrics ti ar
-              pure res
+            (Just ar, Just ti) -> liftIO $ getLyrics ti ar
             (Nothing, Nothing) -> missingError "Missing artist and title"
             (Nothing, _) -> missingError "Missing artist"
             (_, Nothing) -> missingError "Missing title"
