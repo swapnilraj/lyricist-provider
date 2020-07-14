@@ -1,6 +1,6 @@
 { mkDerivation, aeson, base, bytestring, dom-selector, html-conduit
 , http-client, http-conduit, mtl, servant-server, stdenv
-, string-conversions, text, warp, xml-conduit
+, string-conversions, text, wai-logger, warp, xml-conduit
 }:
 mkDerivation {
   pname = "lyricist-provider";
@@ -10,8 +10,8 @@ mkDerivation {
   isExecutable = true;
   executableHaskellDepends = [
     aeson base bytestring dom-selector html-conduit http-client
-    http-conduit mtl servant-server string-conversions text warp
-    xml-conduit
+    http-conduit mtl servant-server string-conversions text wai-logger
+    warp xml-conduit
   ];
   license = stdenv.lib.licenses.bsd3;
 }

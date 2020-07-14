@@ -41,6 +41,7 @@ executable lyricist-provider
                        , servant-server
                        , string-conversions
                        , text
+                       , wai-logger
                        , warp
                        , xml-conduit
   hs-source-dirs:      app
