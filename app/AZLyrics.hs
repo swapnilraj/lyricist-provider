@@ -2,6 +2,7 @@ module AZLyrics where
 
 import Prelude hiding (filter)
 
+import Control.Monad.IO.Class
 import Data.Char (isAlphaNum)
 import Data.Maybe (fromMaybe)
 import Data.String.Conversions (cs)
@@ -14,7 +15,7 @@ import Text.XML.Selector
 
 import Lyrics
 
-getLyrics :: Title -> Artist -> IO Lyrics
+getLyrics :: MonadIO m => Title -> Artist -> m Lyrics
 getLyrics title artist = do
   res <- simpleHttp $ lyricsURL
   let root = fromDocument . parseLBS $ res
